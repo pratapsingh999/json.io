@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Exercise - Table View & Filter using ES6 Array Functions</title>
+    <style>
+        table,th,td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="myInput" placeholder="search.." onkeyup="searchFun()"  style="width:100%" style="height:10%">
+    <!-- <h1>Convert JSON data to simple HTML Table</h1>         -->
+    <table id="display_json_data"></table>
+
+    <script src="script.js"></script>
+
+
+
+
+    <script>
+        const searchFun = () =>{
+        let filter = document.getElementById('myInput').value.toUpperCase();
+        let display_json_data = document.getElementById('display_json_data');
+        let tr = display_json_data.getElementsByTagName('tr');
+        for(var i=0; i<tr.length; i++){
+            let td = tr[i].getElementsByTagName('td')[0];
+            if(td){
+                let textvalue =td.textContent || td.innerHTML;
+    
+                if(textvalue.toUpperCase().indexOf(filter) > -1){
+                    tr[i].style.display="";
+                }else{
+                tr[i].style.display="none";
+            }
+            }
+        }
+    }
+     </script>
+</body>
+</html>
